@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import requests
 import pandas as pd
 import requests
@@ -7,9 +7,16 @@ import requests
 # Create an instance of Flask
 app = Flask(__name__)
 
-# Route to render index.html template using data from Mongo
 @app.route("/")
 def home():
+    
+    return render_template("landing_page.html")
+
+# Route to render index.html template using data from Mongo
+@app.route('/handle_data', methods=['POST'])
+def handle_data():
+    projectpath = request.form['projectFilepath']
+    img_url = projectpath
     # final_string = ''
     def plate_reader(plate_pic):
         # remove warning message
@@ -219,10 +226,10 @@ def home():
     vin = plate_data_dict['specifications']['vin']
     num = plate_data_dict['plate']['make']
     state = plate_data_dict['state']['make']
-    img_url = 'https://raw.githubusercontent.com/N-Prentko/ML_project_license_plate_identifier/master/BenReader/Plate_examples/nick_test.jpg'
+    
 
     # Return template and data
-    return render_template("index.html", img_url=img_url, num=num, state=state, make=make, model=model, year=year, vin=vin)
+    return render_template("output_page.html", img_url=img_url, num=num, state=state, make=make, model=model, year=year, vin=vin)
 
 if __name__ == "__main__":
     app.run(debug=True)
