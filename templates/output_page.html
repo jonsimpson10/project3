@@ -8,40 +8,126 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="">
     <title>License Plate Processor</title>
-    <!-- <link href="https://unpkg.com/filepond/dist/filepond.css" -->
-    <!-- rel="stylesheet"> -->
+    <link rel="stylesheet" type="text/css" href="CSS/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/superhero/bootstrap.min.css" rel="stylesheet" integrity="sha384-rvwYMW9Z/bbxZfgxHQEKx6D91KwffWAG+XnsoYNCGWi/qL1P9dIVYm1HBiHFqQEt" crossorigin="anonymous">
-    <!-- <link href="./dist/filepond.css" rel="stylesheet"> -->
-    >
+    <style>
+      img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      </style>
 </head>
 
 <!-- Adding code in body -->
+<body class="container"> 
+    
+    <header id="main-header">
+		<div class="container">
+			<h1>License Plate Processor</h1>
+		</div>
+	</header>
 
-<body class="container">
+        <!-- Adding jumotron to display page page & Home button-->
+        <div class="jumbotron text-center jumbotron-fluid">
+            <h2>Process Any Valid Minnesota License Plate</h2>
+            <h5>Land of 10,000 Lakes</h5>
+        </div>
+ 
 
-    <!--Adding jumotron to display page page & Home button-->
-    <div class="jumbotron text-center jumbotron-fluid">
-        <h2>US License Plate Processor</h2>
+        <!-- <input type="file"> -->
+
+   <!-- image broken, will need to fix it -->
+   <!-- <img src={{img_url}} alt="License Plate" class="center" width="500" height="333"> -->
+   <p>License Plate Number: {{num}}</p>
+   <p>State: {{state}}</p>
+   <p>VIN: {{vin}}</p>
+   <p>Make: {{make}}</p>
+   <p>Model: {{model}}</p>
+   <p>Year: {{year}}</p>
+   
+   <p><a href="/">Process Another Plate</a></p>
+
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+ <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
+ <div id="container">
+     <div id="main"></div>
+ </div>
+ 
+<!-- Footer -->
+<footer class="page-footer font-small blue pt-4">
+
+    <!-- Footer Links -->
+    <div class="container-fluid text-center text-md-left">
+  
+      <!-- Grid row -->
+      <div class="row">
+  
+        <!-- Grid column -->
+        <div class="col-md-4 mt-md-0 mt-3">
+  
+          <!-- Content -->
+          <!-- <h5 class="text-uppercase">Explore more work done by the creators of this website. </h5> -->
+          <!-- <p>Explore more work done by the creators of this website by clicking on the links to the right.</p> -->
+  
+        </div>
+        <!-- Grid column -->
+  
+        <hr class="clearfix w-100 d-md-none pb-3">
+  
+        <!-- Grid column -->
+        <div class="col-md-3 mb-md-0 mb-3">
+  
+          <!-- Links -->
+          <h5 class="text-uppercase">Links</h5>
+  
+          <ul class="list-unstyled">
+            <li>
+                <a href="https://github.com/quangnhat185/Plate_detect_and_recognize">Plate Detect & Recognize by Quang Nguyen</a>
+            </li>
+            <li>
+                <a href="https://github.com/Terrence-Cummings">Terrence Cummings' Github</a>
+            </li>
+            <li>
+              <a href="https://github.com/BenFarniok">Benjamin Farniok's Github</a>
+            </li>
+            <li>
+              <a href="https://github.com/N-Prentko">Nicholas Prentkowski's Github</a>
+            </li>
+            <li>
+              <a href="https://github.com/jonsimpson10">Jon Simpson's Github</a>
+            </li>
+          </ul>
+  
+        </div>
+        <!-- Grid column -->
+  
+      </div>
+      <!-- Grid row -->
+  
     </div>
-
-
-    <img src={{img_url}} alt="License Plate" width="500" height="333">
-    <p>License Plate Number: {{num}}</p>
-    <p>State: {{state}}</p>
-    <p>VIN: {{vin}}</p>
-    <p>Make: {{make}}</p>
-    <p>Model: {{model}}</p>
-    <p>Year: {{year}}</p>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-
-
+    <!-- Footer Links -->
+  
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2020 Copyright:
+      <a> Cummings, Farniok, Prentkowski, & Simpson</a>
+    </div>
+    <!-- Copyright -->
+  
+  </footer>
+  <!-- Footer -->
 </body>
 
-</html>
+<script>
+
+const inputElement = document.querySelector("input[type='file']");
+
+</script>
+
+</html> 

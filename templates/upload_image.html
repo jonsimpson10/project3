@@ -23,12 +23,8 @@
 <!--Adding jumotron to display page page & Home button-->
 <div class="jumbotron text-center jumbotron-fluid">
     <h2>US License Plate Processor</h2>
-</div>
-<!-- <p>Input URL for license plate image</p>
-<form action="{{ url_for('handle_data') }}" method="post">
-    <input type="text" name="projectFilepath">
-    <input type="submit">
-</form> -->
+
+{% extends "landing_page.html" %}
 
 {% block title %}Upload{% endblock %}
 
@@ -41,7 +37,7 @@
       <h1>Upload an image</h1>
       <hr>
 
-      <form action="/handle_data" method="POST" enctype="multipart/form-data">
+      <form action="/upload-image" method="POST" enctype="multipart/form-data">
 
         <div class="form-group">
           <label>Select image</label>

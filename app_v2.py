@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 import requests
 import pandas as pd
 import requests
-
+from io import BufferedReader
 
 # Create an instance of Flask
 app = Flask(__name__)
@@ -15,8 +15,15 @@ def home():
 # Route to render index.html template using data from Mongo
 @app.route('/handle_data', methods=['POST'])
 def handle_data():
-    projectpath = request.form['projectFilepath']
-    img_url = projectpath
+    
+    image = request.files.get('image')
+    image.name = image.filename
+    image = BufferedReader(image)
+    print(image)
+    # image = request.form['image']
+    # img_url = projectpath
+   
+
     # final_string = ''
     def plate_reader(plate_pic):
         # remove warning message
@@ -34,6 +41,11 @@ def handle_data():
         from keras.models import model_from_json
         from sklearn.preprocessing import LabelEncoder
         import glob
+        import urllib.request
+
+        def get_opencv_img_from_buffer(buffer, flags):
+            bytes_as_np_array = np.frombuffer(buffer.read(), dtype=np.uint8)
+            return cv2.imdecode(bytes_as_np_array, flags)
 
 
         def load_model(path):
@@ -53,7 +65,9 @@ def handle_data():
         wpod_net = load_model(wpod_net_path)
 
         def preprocess_image(image_path,resize=False):
-            img = cv2.imread(image_path)
+            # print(image_path)
+            # img = cv2.imread(image_path)
+            img = image_path
             img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
             img = img / 255
             if resize:
@@ -69,7 +83,7 @@ def handle_data():
             return vehicle, LpImg, cor
 
         # test_image_path = "Plate_examples/usa_car_plate.jpg"
-        test_image_path = "Plate_examples/nick_test.jpg"
+        test_image_path = get_opencv_img_from_buffer(plate_pic, cv2.IMREAD_UNCHANGED)
         vehicle, LpImg,cor = get_plate(test_image_path)
 
         # fig = plt.figure(figsize=(12,6))
@@ -117,7 +131,7 @@ def handle_data():
         # plt.savefig("threshding.png", dpi=300)
 
         # Create sort_contours() function to grab the contour of each digit from left to right
-# Create sort_contours() function to grab the contour of each digit from left to right
+        # Create sort_contours() function to grab the contour of each digit from left to right
         def sort_contours(cnts,reverse = False):
             i = 0
             boundingBoxes = [cv2.boundingRect(c) for c in cnts]
@@ -208,7 +222,7 @@ def handle_data():
         return final_string
     # plate_reader('Plate_examples/nissan-gtr-nismo-rear-end.jpg')
     
-    plate_input = plate_reader('Plate_examples/nick_test.jpg')
+    plate_input = plate_reader(image)
     print(plate_input)
     state_input = 'MN'
     url = "https://us-license-plate-to-vin.p.rapidapi.com/licenseplate"
@@ -226,10 +240,10 @@ def handle_data():
     vin = plate_data_dict['specifications']['vin']
     num = plate_data_dict['plate']['make']
     state = plate_data_dict['state']['make']
-    
+    img_url = "Plate_examples/nick_test.jpg"
 
     # Return template and data
-    return render_template("output_page.html", img_url=img_url, num=num, state=state, make=make, model=model, year=year, vin=vin)
+    return render_template("output_page.html", num=num, state=state, make=make, model=model, year=year, vin=vin)
 
 if __name__ == "__main__":
     app.run(debug=True)
