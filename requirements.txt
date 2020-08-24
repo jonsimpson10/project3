@@ -90,7 +90,6 @@ pyparsing==2.4.7
 pyrsistent==0.16.0
 pyreadline==2.1
 PySocks==1.7.1
-pyspark==2.4.5
 python-dateutil==2.8.1
 python-magic==0.4.18
 pytz==2020.1
