@@ -10,7 +10,7 @@ app = Flask(__name__)
 @app.route("/")
 def home():
     
-    return render_template("landing_page.html")
+    return render_template("index.html")
 
 # Route to render index.html template using data from Mongo
 @app.route('/handle_data', methods=['POST'])
