@@ -54,7 +54,7 @@ def handle_data():
                 with open('%s.json' % path, 'r') as json_file:
                     model_json = json_file.read()
                 model = model_from_json(model_json, custom_objects={})
-                model.load_weights('http://jonsimpson10.github.io/h5/wpod-net.h5', 'http://jonsimpson10.github.io/h5/License_character_recognition_weight.h5')
+                model.load_weights('https://github.com/jonsimpson10/jonsimpson10.github.io/blob/master/h5/License_character_recognition_weight.h5')
                 print("Loading model successfully...")
                 return model
             except Exception as e:
